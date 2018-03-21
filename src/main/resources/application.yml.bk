@@ -1,0 +1,144 @@
+#
+# Common configuration properties.
+#
+
+#
+# Profile specific configuration properties
+#
+spring:
+  profiles: local
+
+database:
+  username: provisioning
+  password: provisioningd
+  url: jdbc:oracle:thin:@pulley.btyp:1521:nmsd
+
+ppapi:
+  username: DEVUSR
+  password: devpwd
+  url: http://devprov:8080/provisioning-1.4
+
+reviews:
+    resourceBase: http://devreviews.yell-devqaugc-aws.co.uk
+    maxPerRoute: 2
+    maxTotal: 2
+    soTimeout: 2000
+    connectionTimeout: 2000
+
+marklogic:
+  username: yelluser
+  password: XHA4nFuQYy
+  url: xcc://%s:%s@mirdev.yellgroup.com:8015/yellcontent
+
+mirdatabase:
+    authentication: digest
+    contentName: unittest
+    host: ycmir01
+    mlModule: /export/export-listings.xqy
+    password: XHA4nFuQYy
+    port: 8027
+    user: yelluser
+
+---
+spring:
+  profiles: dev
+
+database:
+  username: provisioning
+  password: provisioningd
+  url: jdbc:oracle:thin:@pulley.btyp:1521:nmsd
+
+ppapi:
+  username: DEVUSR
+  password: devpwd
+  url: http://devprov:8080/provisioning-1.4
+
+reviews:
+    resourceBase: http://devreviews.yell-devqaugc-aws.co.uk
+    maxPerRoute: 2
+    maxTotal: 2
+    soTimeout: 2000
+    connectionTimeout: 2000
+
+marklogic:
+  username: yelluser
+  password: XHA4nFuQYy
+  url: xcc://%s:%s@mirdev.yellgroup.com:8015/yellcontent
+
+---
+spring:
+  profiles: qa
+
+database:
+  username: provisioning
+  password: provisioningt
+  url: jdbc:oracle:thin:@zeppelin:1521:nmst
+
+ppapi:
+  username: QAUSR
+  password: qapwd
+  url: http://qaprov01:8080/provisioning-1.4
+
+reviews:
+    resourceBase: http://qareviews.yell-devqaugc-aws.co.uk
+    maxPerRoute: 2
+    maxTotal: 2
+    soTimeout: 2000
+    connectionTimeout: 2000
+
+marklogic:
+  username: admin
+  password: admin
+  url: xcc://%s:%s@yccsqammir.yellqatest.com:8015/yellcontent
+
+---
+spring:
+  profiles: prod
+
+database:
+  username: provisioning
+  password: provisioningp
+  url: jdbc:oracle:thin:@nmsupd.btyp:1521:nmsp
+
+ppapi:
+  username: PRODUSR
+  password: prodpwd
+  url: http://laprov01:8080/provisioning-1.4
+
+reviews:
+    resourceBase: http://livereviews.yell-liveugc-aws.co.uk
+    maxPerRoute: 2
+    maxTotal: 2
+    soTimeout: 2000
+    connectionTimeout: 2000
+
+marklogic:
+  username: admin
+  password: admin
+  url: xcc://%s:%s@yccslvmmir.yellgroup.com:8015/yellcontent
+
+---
+spring:
+  profiles: test
+
+database:
+  username: provisioning
+  password: provisioningd
+  url: jdbc:oracle:thin:@pulley.btyp:1521:nmsd
+
+ppapi:
+  username: DEVUSR
+  password: devpwd
+  url: http://devprov:8080/provisioning-1.4
+
+reviews:
+    resourceBase: http://devreviews.yell-devqaugc-aws.co.uk
+    maxPerRoute: 2
+    maxTotal: 2
+    soTimeout: 2000
+    connectionTimeout: 2000
+
+marklogic:
+  username: yelluser
+  password: XHA4nFuQYy
+  url: xcc://%s:%s@mirdev.yellgroup.com:8015/yellcontent

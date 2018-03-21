@@ -53,10 +53,10 @@ public class AES {
     }
 
     public static void main(String[] args) {
-        String password1 = "wellie";
+        String passwordIronman = "ironman";
 
         try {
-            String encyptPass = AES.encrypt(password1);
+            String encyptPass = AES.encrypt(passwordIronman);
             System.out.println(encyptPass);
 
             System.out.println("*****************");

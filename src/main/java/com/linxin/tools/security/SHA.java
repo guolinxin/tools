@@ -32,7 +32,7 @@ public class SHA {
      * @return 加密之后的字节数组
      * @throws Exception
      */
-    public static byte[] encryptSHA(byte[] data) throws Exception {
+    public static byte[] encryptSHA1(byte[] data) throws Exception {
         // 创建具有指定算法名称的信息摘要
 //        MessageDigest sha = MessageDigest.getInstance(KEY_SHA);
         MessageDigest sha = MessageDigest.getInstance(KEY_SHA1);

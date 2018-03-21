@@ -27,6 +27,8 @@ public class PBE {
      */
     private final static String KEY_PBE = "PBEWITHMD5andDES";
 
+    private static PBEParameterSpec obfuscator = new PBEParameterSpec(new byte[]{-96, -17, 103, -12, -30, -78, -99, 6}, 100);
+    private final static boolean randomObfuscator = false;
     private final static int SALT_COUNT = 100;
 
     /**
@@ -74,9 +76,12 @@ public class PBE {
         try {
             // Get Key
             Key k = stringToKey(key);
-            PBEParameterSpec parameterSpec = new PBEParameterSpec(salt, SALT_COUNT);
+            if (randomObfuscator) {
+                obfuscator = new PBEParameterSpec(salt, SALT_COUNT);
+            }
+
             Cipher cipher = Cipher.getInstance(KEY_PBE);
-            cipher.init(Cipher.ENCRYPT_MODE, k, parameterSpec);
+            cipher.init(Cipher.ENCRYPT_MODE, k, obfuscator);
             byte[] bytes = cipher.doFinal(data.getBytes());
 
             return Base64.getEncoder().encodeToString(bytes);
@@ -110,9 +115,12 @@ public class PBE {
         try {
             // Get key
             Key k = stringToKey(key);
-            PBEParameterSpec parameterSpec = new PBEParameterSpec(salt, SALT_COUNT);
+            if (randomObfuscator) {
+                obfuscator = new PBEParameterSpec(salt, SALT_COUNT);
+            }
+
             Cipher cipher = Cipher.getInstance(KEY_PBE);
-            cipher.init(Cipher.DECRYPT_MODE, k, parameterSpec);
+            cipher.init(Cipher.DECRYPT_MODE, k, obfuscator);
 
             byte[] decodedValue = Base64.getDecoder().decode(data);
             byte[] decryptedValue = cipher.doFinal(decodedValue);
@@ -133,17 +141,23 @@ public class PBE {
 
 
     public static void main(String[] args) {
-        String pass = "wellie";
-        String key = "ironman";
 
-        byte[] salt = init();
+        String key1 = "yell.com";
 
-        String encData = encryptPBE(pass, key, salt);
-        String decData = decryptPBE(encData, key, salt);
+        // search
+        String pass1 = "yellow";
 
+        // mir
+        // pass1 = "book";
 
-        System.out.println("Before Encryption：" + pass);
+        byte[] salt1 = init();
+
+        String encData = encryptPBE(pass1, key1, salt1);
+
+        System.out.println("Before Encryption：" + pass1);
         System.out.println("After Encryption：" + encData);
+
+        String decData = decryptPBE(encData, key1, salt1);
         System.out.println("After Decryption：" + decData);
     }
 }
